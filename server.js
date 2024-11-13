@@ -3,6 +3,7 @@ const socket = require('socket.io');
 const path = require('path');
 
 const app = express();
+const PORT = process.env.PORT || 3000;
 
 console.log(path.join(__dirname, 'script.js'))
 app.get('/', (req, res) => {
@@ -17,7 +18,7 @@ app.get('/styles.css', (req, res) => {
   res.sendFile(path.join(__dirname, 'styles.css'));
 });
 
-const server = app.listen(3000, ()=>console.log('server listening in port 3000'));
+const server = app.listen(PORT, ()=>console.log('server listening in port ' + PORT));
 
 const io = socket(server);
 
